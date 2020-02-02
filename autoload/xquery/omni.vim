@@ -1811,7 +1811,21 @@ let s:evenmorekeywords = [
             \ 'if'
             \ ]
 "}}}
-
+call map(s:all_xdmp_functions, '"xdmp:" . v:val . "("')
+call map(s:exsl_extension_functions, '"exsl:" . v:val . "("')
+call map(s:all_ctsfunctions, '"cts:" . v:val . "("')
+call map(s:all_cpffunctions, '"cpf:" . v:val . "("')
+call map(s:functxFunctions, '"functx:" . v:val . "("')
+call map(s:fnfunctions, '"fn:" . v:val . "("')
+call map(s:search_api_functions, '"search:" . v:val . "("')
+call map(s:admin_api_functions, '"admin:" . v:val . "("')
+call map(s:alertfunctions, '"alert:" . v:val . "("')
+call map(s:all_georss_functions, '"georss:" . v:val . "("')
+call map(s:all_geo_functions, '"geo:" . v:val . "("')
+call map(s:all_gml_functions, '"gml:" . v:val . "("')
+call map(s:all_kml_functions, '"kml:" . v:val . "("')
+call map(s:all_mcgm_functions, '"mcgm:" . v:val . "("')
+call map(s:ALL_FUNCTION_NAMESPACES, 'v:val.":"')
 
 function! xquery#omni#complete(findstart, base)
 
@@ -1830,54 +1844,38 @@ function! xquery#omni#complete(findstart, base)
 
         return start
     else
-        call map(s:ALL_FUNCTION_NAMESPACES, 'v:val.":"')
-
         let namespace            = a:base
         let function_completions = []
         let final_menu           = []
 
         if namespace =~ 'xdmp'
-            call map(s:all_xdmp_functions, '"xdmp:" . v:val . "("')
-            let function_completions = copy(s:all_xdmp_functions)
+            let function_completions = s:all_xdmp_functions
         elseif namespace =~ 'exsl'
-            call map(s:exsl_extension_functions, '"exsl:" . v:val . "("')
-            let function_completions = copy(s:exsl_extension_functions)
+            let function_completions = s:exsl_extension_functions
         elseif namespace =~ 'cts'
-            call map(s:all_ctsfunctions, '"cts:" . v:val . "("')
-            let function_completions = copy(s:all_ctsfunctions)
+            let function_completions = s:all_ctsfunctions
         elseif namespace =~ 'cpf'
-            call map(s:all_cpffunctions, '"cpf:" . v:val . "("')
-            let function_completions = copy(s:all_cpffunctions)
+            let function_completions = s:all_cpffunctions
         elseif namespace =~ 'functx'
-            call map(s:functxFunctions, '"functx:" . v:val . "("')
-            let function_completions = copy(s:functxFunctions)
+            let function_completions = s:functxFunctions
         elseif namespace =~ 'fn'
-            call map(s:fnfunctions, '"fn:" . v:val . "("')
-            let function_completions = copy(s:fnfunctions)
+            let function_completions = s:fnfunctions
         elseif namespace =~ 'search'
-            call map(s:search_api_functions, '"search:" . v:val . "("')
-            let function_completions = copy(s:search_api_functions)
+            let function_completions = s:search_api_functions
         elseif namespace =~ 'admin'
-            call map(s:admin_api_functions, '"admin:" . v:val . "("')
-            let function_completions = copy(s:admin_api_functions)
+            let function_completions = s:admin_api_functions
         elseif namespace =~ 'alert'
-            call map(s:alertfunctions, '"alert:" . v:val . "("')
-            let function_completions = copy(s:alertfunctions)
+            let function_completions = s:alertfunctions
         elseif namespace =~ 'georss'
-            call map(s:all_georss_functions, '"georss:" . v:val . "("')
-            let function_completions = copy(s:all_georss_functions)
+            let function_completions = s:all_georss_functions
         elseif namespace =~ 'geo'
-            call map(s:all_geo_functions, '"geo:" . v:val . "("')
-            let function_completions = copy(s:all_geo_functions)
+            let function_completions = s:all_geo_functions
         elseif namespace =~ 'gml'
-            call map(s:all_gml_functions, '"gml:" . v:val . "("')
-            let function_completions = copy(s:all_gml_functions)
+            let function_completions = s:all_gml_functions
         elseif namespace =~ 'kml'
-            call map(s:all_kml_functions, '"kml:" . v:val . "("')
-            let function_completions = copy(s:all_kml_functions)
+            let function_completions = s:all_kml_functions
         elseif namespace =~ 'mcgm'
-            call map(s:all_mcgm_functions, '"mcgm:" . v:val . "("')
-            let function_completions = copy(s:all_mcgm_functions)
+            let function_completions = s:all_mcgm_functions
         elseif namespace =~ 'xs'
             let function_completions = s:atomic_types
         endif
@@ -1891,7 +1889,13 @@ function! xquery#omni#complete(findstart, base)
         else 
             let res  = []
             let res2 = []
-            let values = s:evenmorekeywords + s:keywords + s:morekeywords + function_completions + s:ALL_FUNCTION_NAMESPACES + s:generic_types + s:predefined_entity_references
+            let values = s:evenmorekeywords
+                        \ + s:keywords
+                        \ + s:morekeywords
+                        \ + function_completions
+                        \ + s:ALL_FUNCTION_NAMESPACES
+                        \ + s:generic_types
+                        \ + s:predefined_entity_references
 
             for v in values
                 if v =~? '^'.a:base
