@@ -134,24 +134,20 @@ function! XQueryIndentGet()
     let l:p_start_col_syn_id_attr =
         \ synIDattr(synID(l:plnum, s:StartColumn(l:plnum), 0), "name")
 
-    echomsg "/indent/xquery.vim:135  Entered XQueryIndentGet()" . "  v:lnum: " . v:lnum  . "  col: " . col('.')  . "  l:plnum: " . l:plnum . "  l:start_col_syn_id_attr: " . l:start_col_syn_id_attr . "  l:P_start_col_syn_id_attr: " . l:p_start_col_syn_id_attr  . "  l:line: " . l:line
 
     if l:immediate_plnum == 0
         " This is the first non-empty line, use zero indent.
         return 0    
 
     elseif l:line =~ l:STARTS_WITH_IMPORT  || l:line =~ l:STARTS_WITH_DECLARE
-        echomsg "/indent/xquery.vim:142  Lines starting with declare/import should always have 0 indentation"
         return 0 
 
     elseif l:start_col_syn_id_attr == 'xqComment' || l:line =~ '^\s*:'
 
-        echomsg '/indent/xquery.vim:147   Not changing indent for comment'
         return -1
 
     elseif l:line =~ '^\s*{'
 
-        echomsg '/indent/xquery.vim:152  (test #9)  Autoindenting unconditionally'
 
         return l:autoindent
 
@@ -159,25 +155,20 @@ function! XQueryIndentGet()
 
         if l:pline =~ '^\s*\<let\>.*:='
 
-            echomsg '/indent/xquery.vim:160  (test #8)  Previous line had a let followed by a := so indent right one &sw' 
             return l:autoindent + &sw
 
         elseif l:pline =~ l:OPEN_SEQUENCE_PAT
 
-            echomsg "/indent/xquery.vim:165  Previous line was a open function call or open sequence, so shift right once (note: could also align param list)"
             return l:autoindent + &sw
 
         elseif l:pline =~ '^\s*\<for\>'
 
-            echomsg '/indent/xquery.vim:170  ends-with-comma-but-starts-with-a-for'
             return matchend(l:pline, '\<in\>') + &sw + 3
 
         elseif l:pline =~ l:STARTS_WITH_DECLARE
 
-            echomsg '/indent/xquery.vim.175  Aligning function or variable arguments'
             return matchend(l:pline, '(') 
         else
-            echomsg "/indent/xquery.vim:178  pline ends with a comma, so autoindent"
             return l:autoindent
         endif
 
@@ -218,10 +209,8 @@ function! XQueryIndentGet()
               let l:paren_indent = l:rhs_paren_or_bracket_indent
             endif
 
-            echomsg '/indent/xquery.vim:219  indenting via searchpairpos()... ' . 'm_lnum: ' . string(m_lnum) . '  m_col: ' . string(m_col) . '  character under cursor: ' . getline('.')[col('.')] . '  l:paren_indent ' . l:paren_indent
 
         catch
-            echomsg "/indent/xquery.vim:222   Exception! " . v:exception  . "  v:throwpoint:" . v:throwpoint
         endtry
 
         return l:paren_indent
@@ -239,18 +228,15 @@ function! XQueryIndentGet()
 
         let l:if_col = match(getline(l:if_else_lnum), '\%[else ]if')
 
-        echomsg '/indent/xquery.vim:240  Current line STARTS WITH an "else" or "else if", so indenting to the closest "if" or "else if" since they should align...   l:if_else_lnum:' . string(l:if_else_lnum) . '   l:if_col:' . string(l:if_col)
 
         return l:if_col
 
     elseif l:pline =~ l:FLOWR_IN_RHS_PAT
 
-        echomsg "/indent/xquery.vim:246  Aligning FLOWR in rhs of LetClause"
         return matchend(l:pline, l:FLOWR_IN_RHS_PAT) - 3
 
     elseif l:pline =~ l:OPEN_ASSIGNMENT_PAT
 
-        echomsg "/indent/xquery.vim:251 rhs looked like an 'open assignment', so align one space after the :="
         return matchend(l:pline, l:ASSIGNMENT_EQUALS_PAT) + &sw + 1
 
     elseif l:pline =~ l:INDENT_RIGHT_ENDING_PAT 
@@ -258,10 +244,8 @@ function! XQueryIndentGet()
 
         if l:pline =~ l:FLOWR_IN_RHS_PAT
             " 3/11/2011 find the := and start the indentation from there instead
-            echomsg '/indent/xquery.vim:259  Let with an expression in the rhs, so indent to the right of the :='
             return matchend(l:pline, ':=') + &sw
         else 
-            echomsg '/indent/xquery.vim:262  Previous line STARTED OR ENDED WITH a word or character where the next line should be indented RIGHT: ' . l:pline
 
             return l:autoindent + &sw 
         endif
@@ -274,7 +258,6 @@ function! XQueryIndentGet()
         "   let $gogoog := some:function('asdfsadF',
         "                                'ASfdasdF'
 
-        echomsg "/indent/xquery.vim:275   Aligning with what might be a " . "ParamList or Sequence expression in the previous line  l:pline:"
 
         let l:column_before_opening_paren = match(l:pline, l:PARAM_LIST_PAT)
         return l:column_before_opening_paren + 1
@@ -291,7 +274,6 @@ function! XQueryIndentGet()
 
         if exists('*XmlIndentGet') 
             let xml_indent = XmlIndentGet(v:lnum,1)
-            echomsg "/indent/xquery.vim:292 (test #'s 2 & 10 & 12)  Indenting w/ XmlIndentGet: " . xml_indent .  '    l:plnum:' . l:plnum
             return xml_indent
         else 
             return -1
@@ -303,7 +285,6 @@ function! XQueryIndentGet()
         " instead of autoindenting.  l:INDENT_RIGHT_STARTING_PAT takes care of 
         " the initial typeswitch line
 
-        echomsg '/indent/xquery.vim:304   Aligning case statements in typeswitch'
 
         let [l:pline_with_case, l:pcol_with_case] = searchpos('case', 'bnW')
 
@@ -315,7 +296,6 @@ function! XQueryIndentGet()
 
     elseif l:line =~ l:STARTS_WITH_THEN_PAT
 
-        echomsg '/indent/xquery.vim:316  Line begins with then, align with if in pline   ' . l:plnum
 
         return match(l:pline, '\<if\>')
 
@@ -324,13 +304,11 @@ function! XQueryIndentGet()
 
         let ind = indent(l:immediate_plnum)
 
-        echomsg '/indent/xquery.vim:325  immediate previous line was the end of a block comment end, so subtract one  ' . ind
 
         return ind == 0 ? 0 : ind - 1 
     else 
         " Do indentation based on the last line STARTING WITH AN XQuery KEYWORD  
 
-        echomsg '/indent/xquery.vim:331   In final else() block!'
 
         let l:pwq_lnum = s:PrevnonblankStartingWithXQueryKeyword(v:lnum, v:lnum-1, 0)
         let l:start_col = s:StartColumn(l:pwq_lnum)
@@ -338,11 +316,9 @@ function! XQueryIndentGet()
         if getline(l:pwq_lnum) =~ l:STARTS_WITH_DECLARE_FUNCTION
                     \ && l:pline !~ '[,]\s*$'
 
-            echomsg '/indent/xquery.vim:339  Supposedly in function declaration, so do not perform indent'
             return -1
         else
 
-            echomsg '/indent/xquery.vim:343  IN ELSE BLOCK - No indentation rules were met, so align with the previous line, or one that starts with an xquery keyword    l:start_col: ' . l:start_col . '  l:pwq_lnum: ' . l:pwq_lnum . '  l:autoindent: ' . l:autoindent
 
             let l:starts_with_keyword = s:StartsWithKeyword(v:lnum)
 
@@ -350,7 +326,6 @@ function! XQueryIndentGet()
                         \ || l:start_col_syn_id_attr =~ 'xml')
                         \ && !l:starts_with_keyword
 
-                echomsg '/indent/xquery.vim:351   Dont indent to line with keyword if the immediate previous line was a closing paren/bracket, or inside an xml tag. Autoindenting instead.'
 
                 return l:autoindent
 
@@ -387,20 +362,17 @@ function! XQueryIndentGet()
                     return -1
                 else 
 
-                    echomsg '/indent/xquery.vim:388   (tests #4 & #5)  Previous keyword was a return, so indenting expression that *might* have a FLOWRs in its rhs...  indent(' . ln . '): ' . indent(ln) .  '    return_indent: ' . return_indent . '  curr line number: ' . v:lnum
                     return indent(ln) == 0 ? -1 : indent(ln)
                 endif
 
 
             elseif l:starts_with_keyword
-                echomsg '/indent/xquery.vim:394   (tests #14)  Line starts with keyword, so aligning with the previous keyword    pwq_lnum:' . l:pwq_lnum . '  l:start_col:' . l:start_col . '  l:autoindent:' . l:autoindent
 
                 " 4/29/2011   and/or use double the indentation
 
                 return (l:pwq_lnum == -1) ? l:autoindent : (l:start_col == -1) ? l:autoindent : l:start_col 
             else 
 
-                echomsg '/indent/xquery.vim:401  No rules met, so NOT indenting'
                 return -1
             endif
 
@@ -408,7 +380,6 @@ function! XQueryIndentGet()
 
     endif
 
-    echomsg "/indent/xquery.vim:409  weird, reached end of function WITHOUT returning indentation, so maybe an execption occurred. Not changing indentation   l:plnum:" . l:plnum
 
     return -1
 
@@ -433,7 +404,6 @@ endfunction
 "       depth
 "
 function! s:PrevnonblankStartingWithXQueryKeyword(start_lnum, curr_lnum, depth) 
-    "echomsg '/indent/xquery.vim:242  Entered PrevnonblankStartingWithXQueryKeyword!  v:lnum:' . v:lnum . '  a:depth:' . a:depth . '  line: ' . getline(v:lnum) 
 
     let l:number_of_lines_back = a:start_lnum - a:curr_lnum
 
@@ -501,5 +471,3 @@ endfunction
 "}}}
 
 let b:undo_indent = "setlocal indentexpr< indentkeys< autoindent<"
-
-" vim:sw=4 fdm=marker tw=80

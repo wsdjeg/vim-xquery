@@ -85,7 +85,7 @@ if !exists("no_plugin_maps") && !exists("no_mail_maps")
 endif
 
 if exists('&ofu')
-    setlocal omnifunc=xquerycomplete#CompleteXQuery
+    setlocal omnifunc=xquery#omni#complete
 endif
 
 " from html.vim
