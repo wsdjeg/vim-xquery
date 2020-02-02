@@ -877,6 +877,863 @@ let s:cts_search_functions = [
             \ 'walk']
 "}}}
 
+
+" let s:ctsgeospatial_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/GeospatialBuiltins.html
+let s:ctsgeospatial_functions = [
+            \ 'arc-intersection',
+            \ 'bearing',
+            \ 'bounding-boxes',
+            \ 'box',
+            \ 'box-east',
+            \ 'box-intersects',
+            \ 'box-north',
+            \ 'box-south',
+            \ 'box-west',
+            \ 'circle',
+            \ 'circle-center',
+            \ 'circle-intersects',
+            \ 'circle-radius',
+            \ 'complex-polygon',
+            \ 'complex-polygon-contains',
+            \ 'complex-polygon-inner',
+            \ 'complex-polygon-intersects',
+            \ 'complex-polygon-outer',
+            \ 'destination',
+            \ 'distance',
+            \ 'linestring',
+            \ 'linestring-vertices',
+            \ 'parse-wkt',
+            \ 'point',
+            \ 'point-latitude',
+            \ 'point-longitude',
+            \ 'polygon',
+            \ 'polygon-contains',
+            \ 'polygon-intersects',
+            \ 'polygon-vertices',
+            \ 'shortest-distance',
+            \ 'to-wkt']
+"}}}
+
+" let s:ctsgeospatial_lexicons_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/GeospatialLexicons.html
+let s:ctsgeospatial_lexicons_functions = [
+            \ 'element-attribute-pair-geospatial-boxes',
+            \ 'element-attribute-pair-geospatial-value-match',
+            \ 'element-attribute-pair-geospatial-values',
+            \ 'element-attribute-value-geospatial-co-occurrences',
+            \ 'element-child-geospatial-boxes',
+            \ 'element-child-geospatial-value-match',
+            \ 'element-child-geospatial-values',
+            \ 'element-geospatial-boxes',
+            \ 'element-geospatial-value-match',
+            \ 'element-geospatial-values',
+            \ 'element-pair-geospatial-boxes',
+            \ 'element-pair-geospatial-value-match',
+            \ 'element-pair-geospatial-values',
+            \ 'element-value-geospatial-co-occurrences',
+            \ 'geospatial-co-occurrences']
+"}}}
+
+" http://community.marklogic.com/pubs/5.0/apidocs/Clusterer.html
+let s:cts_clusterer_functions = ['cluster']
+
+let s:all_ctsfunctions = 
+            \ s:cts_classifier_functions +
+            \ s:cts_query_constructor_functions +
+            \ s:cts_lexicon_functions +
+            \ s:cts_search_functions +
+            \ s:cts_clusterer_functions
+
+" let s:search_api_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/SearchAPI.html
+let s:search_api_functions = [
+            \ 'check-options',
+            \ 'estimate',
+            \ 'get-default-options',
+            \ 'parse',
+            \ 'remove-constraint',
+            \ 'resolve',
+            \ 'resolve-nodes', 
+            \ 'search', 
+            \ 'snippet', 
+            \ 'suggest', 
+            \ 'unparse']
+"}}}
+
+" let s:xdmp_admin_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/AdminBuiltins.html
+let s:xdmp_admin_functions = [
+            \ 'database-backup',
+            \ 'database-backup-cancel',
+            \ 'database-backup-purge',
+            \ 'database-backup-status',
+            \ 'database-backup-validate',
+            \ 'database-restore',
+            \ 'database-restore-cancel',
+            \ 'database-restore-status',
+            \ 'database-restore-validate',
+            \ 'filesystem-directory',
+            \ 'filesystem-file',
+            \ 'filesystem-file-exists',
+            \ 'filesystem-file-length',
+            \ 'forest-backup',
+            \ 'forest-clear',
+            \ 'forest-open-replica',
+            \ 'forest-restart',
+            \ 'forest-restore',
+            \ 'forest-rollback',
+            \ 'merge-cancel',
+            \ 'restart',
+            \ 'shutdown',
+            \ 'start-journal-archiving',
+            \ 'stop-journal-archiving']
+"}}}
+
+" let s:xdmp_appserver_functions = ["{{{
+let s:xdmp_appserver_functions = [
+            \ 'add-response-header',
+            \ 'get-original-url',
+            \ 'get-request-body',
+            \ 'get-request-client-address',
+            \ 'get-request-client-certificate',
+            \ 'get-request-field',
+            \ 'get-request-field-content-type',
+            \ 'get-request-field-filename',
+            \ 'get-request-field-names',
+            \ 'get-request-header',
+            \ 'get-request-header-names',
+            \ 'get-request-method',
+            \ 'get-request-path',
+            \ 'get-request-port',
+            \ 'get-request-protocol',
+            \ 'get-request-url',
+            \ 'get-request-username',
+            \ 'get-response-code',
+            \ 'get-response-encoding',
+            \ 'get-server-field',
+            \ 'get-server-field-names',
+            \ 'get-session-field',
+            \ 'get-session-field-names',
+            \ 'get-url-rewriter-path',
+            \ 'login',
+            \ 'logout',
+            \ 'redirect-response',
+            \ 'set-request-time-limit',
+            \ 'set-response-code',
+            \ 'set-response-content-type',
+            \ 'set-response-encoding',
+            \ 'set-server-field',
+            \ 'set-server-field-privilege',
+            \ 'set-session-field',
+            \ 'uri-is-file',
+            \ 'url-decode',
+            \ 'url-encode',
+            \ 'x509-certificate-extract']
+"}}}
+
+" let s:xdmp_document_conversion_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/Document-Conversion.html
+let s:xdmp_document_conversion_functions = [
+            \ 'document-filter', 
+            \ 'excel-convert', 
+            \ 'gunzip', 
+            \ 'gzip', 
+            \ 'pdf-convert', 
+            \ 'powerpoint-convert', 
+            \ 'tidy', 
+            \ 'word-convert',
+            \ 'zip-create',
+            \ 'zip-get',
+            \ 'zip-manifest']
+"}}}
+
+" let s:exsl_extension_functions = ["{{{
+" part of http://community.marklogic.com/pubs/5.0/apidocs/Extension.html
+let s:exsl_extension_functions = [
+            \ 'node-set',
+            \ 'object-type']
+"}}}
+
+" let s:xdmp_extension_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/Extension.html
+let s:xdmp_extension_functions = [
+            \ 'access',
+            \ 'add64',
+            \ 'and64',
+            \ 'apply',
+            \ 'architecture',
+            \ 'base64-decode',
+            \ 'base64-encode',
+            \ 'binary-decode',
+            \ 'binary-is-external',
+            \ 'binary-is-large',
+            \ 'binary-is-small',
+            \ 'binary-size',
+            \ 'castable-as',
+            \ 'cluster',
+            \ 'cluster-name',
+            \ 'collation-canonical-uri',
+            \ 'collection-locks',
+            \ 'collection-properties',
+            \ 'configuration-timestamp',
+            \ 'crypt',
+            \ 'current-last',
+            \ 'current-position',
+            \ 'database',
+            \ 'database-forests',
+            \ 'database-global-nonblocking-timestamp',
+            \ 'database-is-replica',
+            \ 'database-name',
+            \ 'database-nonblocking-timestamp',
+            \ 'databases',
+            \ 'describe',
+            \ 'diacritic-less',
+            \ 'directory',
+            \ 'directory-locks',
+            \ 'directory-properties',
+            \ 'document-forest',
+            \ 'document-get',
+            \ 'document-get-collections',
+            \ 'document-get-properties',
+            \ 'document-get-quality',
+            \ 'document-locks',
+            \ 'document-properties',
+            \ 'elapsed-time',
+            \ 'element-content-type',
+            \ 'email',
+            \ 'encoding-language-detect',
+            \ 'estimate',
+            \ 'eval',
+            \ 'eval-in',
+            \ 'exists',
+            \ 'external-binary',
+            \ 'external-binary-path',
+            \ 'foreign-clusters',
+            \ 'forest',
+            \ 'forest-databases',
+            \ 'forest-host',
+            \ 'forest-name',
+            \ 'forests',
+            \ 'format-number',
+            \ 'from-json',
+            \ 'function',
+            \ 'function-module',
+            \ 'function-name',
+            \ 'get',
+            \ 'get-orphaned-binaries',
+            \ 'group',
+            \ 'group-hosts',
+            \ 'group-name',
+            \ 'group-servers',
+            \ 'groups',
+            \ 'hash32',
+            \ 'hash64',
+            \ 'hex-to-integer',
+            \ 'hmac-md5',
+            \ 'hmac-sha1',
+            \ 'hmac-sha256',
+            \ 'hmac-sha512',
+            \ 'host',
+            \ 'host-forests',
+            \ 'host-name',
+            \ 'hosts',
+            \ 'http-delete',
+            \ 'http-get',
+            \ 'http-head',
+            \ 'http-options',
+            \ 'http-post',
+            \ 'http-put',
+            \ 'integer-to-hex',
+            \ 'integer-to-octal',
+            \ 'invoke',
+            \ 'invoke-in',
+            \ 'key-from-QName',
+            \ 'log',
+            \ 'log-level',
+            \ 'lshift64',
+            \ 'md5',
+            \ 'modules-database',
+            \ 'modules-root',
+            \ 'mul64',
+            \ 'node-database',
+            \ 'node-kind',
+            \ 'node-uri',
+            \ 'not64',
+            \ 'octal-to-integer',
+            \ 'or64',
+            \ 'parse-dateTime',
+            \ 'parse-yymmdd',
+            \ 'path',
+            \ 'plan',
+            \ 'platform',
+            \ 'pretty-print',
+            \ 'product-edition',
+            \ 'QName-from-key',
+            \ 'query-meters',
+            \ 'query-trace',
+            \ 'quote',
+            \ 'random',
+            \ 'remove-orphaned-binary',
+            \ 'request',
+            \ 'request-timestamp',
+            \ 'rethrow',
+            \ 'rshift64',
+            \ 'schema-database',
+            \ 'security-database',
+            \ 'server',
+            \ 'server-name',
+            \ 'servers',
+            \ 'set',
+            \ 'sha1',
+            \ 'sha256',
+            \ 'sha512',
+            \ 'sleep',
+            \ 'spawn',
+            \ 'spawn-in',
+            \ 'step64',
+            \ 'strftime',
+            \ 'subbinary',
+            \ 'timestamp-to-wallclock',
+            \ 'to-json',
+            \ 'trace',
+            \ 'triggers-database',
+            \ 'unpath',
+            \ 'unquote',
+            \ 'uri-content-type',
+            \ 'uri-format',
+            \ 'user-last-login',
+            \ 'validate',
+            \ 'value',
+            \ 'version',
+            \ 'wallclock-to-timestamp',
+            \ 'with-namespaces',
+            \ 'xor64',
+            \ 'xquery-version',
+            \ 'xslt-eval',
+            \ 'xslt-invoke']
+"}}}
+
+" let s:xdmp_security_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/Security.html
+let s:xdmp_security_functions = [
+            \ 'amp',
+            \ 'amp-roles',
+            \ 'can-grant-roles',
+            \ 'default-collections',
+            \ 'default-permissions',
+            \ 'document-get-permissions',
+            \ 'get-current-roles',
+            \ 'get-current-user',
+            \ 'get-request-user',
+            \ 'has-privilege',
+            \ 'permission',
+            \ 'privilege',
+            \ 'privilege-roles',
+            \ 'role',
+            \ 'role-roles',
+            \ 'security-assert',
+            \ 'user',
+            \ 'user-roles']
+"}}}
+
+" let s:xdmp_server_monitoring_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/ServerMonitoring.html
+let s:xdmp_server_monitoring_functions = [
+            \ 'cache-status',
+            \ 'foreign-cluster-status',
+            \ 'forest-counts',
+            \ 'forest-status',
+            \ 'host-status',
+            \ 'request-cancel',
+            \ 'request-status',
+            \ 'server-status']
+"}}}
+
+" let s:xdmp_update_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/UpdateBuiltins.html
+let s:xdmp_update_functions = [
+            \ 'collection-delete',
+            \ 'directory-create',
+            \ 'directory-delete',
+            \ 'document-add-collections',
+            \ 'document-add-permissions',
+            \ 'document-add-properties',
+            \ 'document-assign',
+            \ 'document-delete',
+            \ 'document-insert',
+            \ 'document-load',
+            \ 'document-remove-collections',
+            \ 'document-remove-permissions',
+            \ 'document-remove-properties',
+            \ 'document-set-collections',
+            \ 'document-set-permissions',
+            \ 'document-set-properties',
+            \ 'document-set-property',
+            \ 'document-set-quality',
+            \ 'load',
+            \ 'lock-acquire',
+            \ 'lock-for-update',
+            \ 'lock-release',
+            \ 'merge',
+            \ 'merging',
+            \ 'node-delete',
+            \ 'node-insert-after',
+            \ 'node-insert-before',
+            \ 'node-insert-child',
+            \ 'node-replace',
+            \ 'save']
+"}}}
+
+let s:COMMON_xdmp_functions = [
+            \ 'get-request-field', 
+            \ 'document-insert',
+            \ 'node-replace',
+            \ 'node-insert-child',
+            \ 'node-delete',
+            \ 'redirect-response']
+
+let s:all_xdmp_functions = 
+            \ s:COMMON_xdmp_functions +
+            \ s:xdmp_extension_functions +
+            \ s:xdmp_update_functions +
+            \ s:xdmp_security_functions +
+            \ s:xdmp_admin_functions + 
+            \ s:xdmp_appserver_functions + 
+            \ s:xdmp_document_conversion_functions +
+            \ s:xdmp_server_monitoring_functions
+
+" let s:fnfunctions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/W3C.html
+let s:fnfunctions = [
+            \ 'abs',
+            \ 'adjust-date-to-timezone',
+            \ 'adjust-dateTime-to-timezone',
+            \ 'adjust-time-to-timezone',
+            \ 'analyze-string',
+            \ 'avg',
+            \ 'base-uri',
+            \ 'boolean',
+            \ 'ceiling',
+            \ 'codepoint-equal',
+            \ 'codepoints-to-string',
+            \ 'collection',
+            \ 'compare',
+            \ 'concat',
+            \ 'contains',
+            \ 'count',
+            \ 'current',
+            \ 'current-date',
+            \ 'current-dateTime',
+            \ 'current-group',
+            \ 'current-grouping-key',
+            \ 'current-time',
+            \ 'data',
+            \ 'day-from-date',
+            \ 'day-from-dateTime',
+            \ 'days-from-duration',
+            \ 'deep-equal',
+            \ 'default-collation',
+            \ 'distinct-nodes',
+            \ 'distinct-values',
+            \ 'doc',
+            \ 'doc-available',
+            \ 'document',
+            \ 'document-uri',
+            \ 'element-available',
+            \ 'empty',
+            \ 'encode-for-uri',
+            \ 'ends-with',
+            \ 'error',
+            \ 'escape-html-uri',
+            \ 'escape-uri',
+            \ 'exactly-one',
+            \ 'exists',
+            \ 'expanded-QName',
+            \ 'false',
+            \ 'floor',
+            \ 'format-date',
+            \ 'format-dateTime',
+            \ 'format-number',
+            \ 'format-time',
+            \ 'function-available',
+            \ 'generate-id',
+            \ 'hours-from-dateTime',
+            \ 'hours-from-duration',
+            \ 'hours-from-time',
+            \ 'id',
+            \ 'idref',
+            \ 'implicit-timezone',
+            \ 'in-scope-prefixes',
+            \ 'index-of',
+            \ 'insert-before',
+            \ 'iri-to-uri',
+            \ 'key',
+            \ 'lang',
+            \ 'last',
+            \ 'local-name',
+            \ 'local-name-from-QName',
+            \ 'lower-case',
+            \ 'matches',
+            \ 'max',
+            \ 'min',
+            \ 'minutes-from-dateTime',
+            \ 'minutes-from-duration',
+            \ 'minutes-from-time',
+            \ 'month-from-date',
+            \ 'month-from-dateTime',
+            \ 'months-from-duration',
+            \ 'name',
+            \ 'namespace-uri',
+            \ 'namespace-uri-for-prefix',
+            \ 'namespace-uri-from-QName',
+            \ 'nilled',
+            \ 'node-kind',
+            \ 'node-name',
+            \ 'normalize-space',
+            \ 'normalize-unicode',
+            \ 'not',
+            \ 'number',
+            \ 'one-or-more',
+            \ 'position',
+            \ 'prefix-from-QName',
+            \ 'QName',
+            \ 'regex-group',
+            \ 'remove',
+            \ 'replace',
+            \ 'resolve-QName',
+            \ 'resolve-uri',
+            \ 'reverse',
+            \ 'root',
+            \ 'round',
+            \ 'round-half-to-even',
+            \ 'seconds-from-dateTime',
+            \ 'seconds-from-duration',
+            \ 'seconds-from-time',
+            \ 'starts-with',
+            \ 'static-base-uri',
+            \ 'string',
+            \ 'string-join',
+            \ 'string-length',
+            \ 'string-pad',
+            \ 'string-to-codepoints',
+            \ 'subsequence',
+            \ 'substring',
+            \ 'substring-after',
+            \ 'substring-before',
+            \ 'subtract-dateTimes-yielding-dayTimeDuration',
+            \ 'subtract-dateTimes-yielding-yearMonthDuration',
+            \ 'sum',
+            \ 'system-property',
+            \ 'timezone-from-date',
+            \ 'timezone-from-dateTime',
+            \ 'timezone-from-time',
+            \ 'tokenize',
+            \ 'trace',
+            \ 'translate',
+            \ 'true',
+            \ 'type-available',
+            \ 'unordered',
+            \ 'unparsed-entity-public-id',
+            \ 'unparsed-entity-uri',
+            \ 'unparsed-text',
+            \ 'unparsed-text-available',
+            \ 'upper-case',
+            \ 'year-from-date',
+            \ 'year-from-dateTime',
+            \ 'years-from-duration',
+            \ 'zero-or-one']
+"}}}
+
+" let s:functxFunctions = ["{{{
+" http://www.xqueryfunctions.com/xq/alpha.html
+let s:functxFunctions = [
+            \ 'add-attributes',
+            \ 'add-months',
+            \ 'add-or-update-attributes',
+            \ 'all-whitespace',
+            \ 'are-distinct-values',
+            \ 'atomic-type',
+            \ 'avg-empty-is-zero',
+            \ 'between-exclusive',
+            \ 'between-inclusive',
+            \ 'camel-case-to-words',
+            \ 'capitalize-first',
+            \ 'change-element-names-deep',
+            \ 'change-element-ns-deep',
+            \ 'change-element-ns',
+            \ 'chars',
+            \ 'contains-any-of',
+            \ 'contains-case-insensitive',
+            \ 'contains-word',
+            \ 'copy-attributes',
+            \ 'date',
+            \ 'dateTime',
+            \ 'day-in-year',
+            \ 'day-of-week-abbrev-en',
+            \ 'day-of-week-name-en',
+            \ 'day-of-week',
+            \ 'dayTimeDuration',
+            \ 'days-in-month',
+            \ 'depth-of-node',
+            \ 'distinct-attribute-names',
+            \ 'distinct-deep',
+            \ 'distinct-element-names',
+            \ 'distinct-element-paths',
+            \ 'distinct-nodes',
+            \ 'duration-from-timezone',
+            \ 'dynamic-path',
+            \ 'escape-for-regex',
+            \ 'exclusive-or',
+            \ 'first-day-of-month',
+            \ 'first-day-of-year',
+            \ 'first-node',
+            \ 'follows-not-descendant',
+            \ 'format-as-title-en',
+            \ 'fragment-from-uri',
+            \ 'get-matches-and-non-matches',
+            \ 'get-matches',
+            \ 'has-element-only-content',
+            \ 'has-empty-content',
+            \ 'has-mixed-content',
+            \ 'has-simple-content',
+            \ 'id-from-element',
+            \ 'id-untyped',
+            \ 'if-absent',
+            \ 'if-empty',
+            \ 'index-of-deep-equal-node',
+            \ 'index-of-match-first',
+            \ 'index-of-node',
+            \ 'index-of-string-first',
+            \ 'index-of-string-last',
+            \ 'index-of-string',
+            \ 'insert-string',
+            \ 'is-a-number',
+            \ 'is-absolute-uri',
+            \ 'is-ancestor',
+            \ 'is-descendant',
+            \ 'is-leap-year',
+            \ 'is-node-among-descendants-deep-equal',
+            \ 'is-node-among-descendants',
+            \ 'is-node-in-sequence-deep-equal',
+            \ 'is-node-in-sequence',
+            \ 'is-value-in-sequence',
+            \ 'last-day-of-month',
+            \ 'last-day-of-year',
+            \ 'last-node',
+            \ 'leaf-elements',
+            \ 'left-trim',
+            \ 'line-count',
+            \ 'lines',
+            \ 'max-depth',
+            \ 'max-determine-type',
+            \ 'max-line-length',
+            \ 'max-node',
+            \ 'max-string',
+            \ 'min-determine-type',
+            \ 'min-node',
+            \ 'min-non-empty-string',
+            \ 'min-string',
+            \ 'mmddyyyy-to-date',
+            \ 'month-abbrev-en',
+            \ 'month-name-en',
+            \ 'name-test',
+            \ 'namespaces-in-use',
+            \ 'next-day',
+            \ 'node-kind',
+            \ 'non-distinct-values',
+            \ 'number-of-matches',
+            \ 'open-ref-document',
+            \ 'ordinal-number-en',
+            \ 'pad-integer-to-length',
+            \ 'pad-string-to-length',
+            \ 'path-to-node-with-pos',
+            \ 'path-to-node',
+            \ 'precedes-not-ancestor',
+            \ 'previous-day',
+            \ 'remove-attributes-deep',
+            \ 'remove-attributes',
+            \ 'remove-elements-deep',
+            \ 'remove-elements-not-contents',
+            \ 'remove-elements',
+            \ 'repeat-string',
+            \ 'replace-beginning',
+            \ 'replace-element-values',
+            \ 'replace-first',
+            \ 'replace-multi',
+            \ 'reverse-string',
+            \ 'right-trim',
+            \ 'scheme-from-uri',
+            \ 'sequence-deep-equal',
+            \ 'sequence-node-equal-any-order',
+            \ 'sequence-node-equal',
+            \ 'sequence-type',
+            \ 'siblings-same-name',
+            \ 'siblings',
+            \ 'sort-as-numeric',
+            \ 'sort-case-insensitive',
+            \ 'sort-document-order',
+            \ 'sort',
+            \ 'substring-after-if-contains',
+            \ 'substring-after-last-match',
+            \ 'substring-after-last',
+            \ 'substring-after-match',
+            \ 'substring-before-if-contains',
+            \ 'substring-before-last-match',
+            \ 'substring-before-last',
+            \ 'substring-before-match',
+            \ 'time',
+            \ 'timezone-from-duration',
+            \ 'total-days-from-duration',
+            \ 'total-hours-from-duration',
+            \ 'total-minutes-from-duration',
+            \ 'total-months-from-duration',
+            \ 'total-seconds-from-duration',
+            \ 'total-years-from-duration',
+            \ 'trim',
+            \ 'update-attributes',
+            \ 'value-except',
+            \ 'value-intersect',
+            \ 'value-union',
+            \ 'word-count',
+            \ 'words-to-camel-case',
+            \ 'wrap-values-in-elements',
+            \ 'yearMonthDuration']
+"}}}
+
+" 8/6/2010  Putting variable types here 
+
+"  see Walmsley:490  in index!
+"  atomicType chart?   Walmsley:144
+"  generic sequence types?  Walmsley:152
+"
+"    wat about.... 
+"       comment()
+"       processing-instruction()
+"       document-node()
+"
+" let s:generic_types = ["{{{
+let s:generic_types = [
+            \ 'item()', 
+            \ 'node()',
+            \ 'text()',
+            \ 'empty-sequence()',
+            \ 'element()', 
+            \ 'document()'
+            \ ]
+"}}}
+
+" these are prefixed with xs:  
+" let s:atomic_types = ["{{{
+let s:atomic_types = [
+            \ 'xs:string',
+            \ 'xs:dateTime',
+            \ 'xs:anyAtomicType',
+            \ 'xs:anyType',
+            \ 'xs:anyURI',
+            \ 'xs:base64Binary',
+            \ 'xs:boolean',
+            \ 'xs:date',
+            \ 'xs:dayTimeDuration',
+            \ 'xs:decimal',
+            \ 'xs:double',
+            \ 'xs:duration',
+            \ 'xs:float',
+            \ 'xs:gDay',
+            \ 'xs:gMonth',
+            \ 'xs:gMonthDay',
+            \ 'xs:gYearMonth',
+            \ 'xs:gYear',
+            \ 'xs:hexBinary',
+            \ 'xs:integer',
+            \ 'xs:negativeInteger',
+            \ 'xs:nonPositiveInteger',
+            \ 'xs:nonNegativeInteger',
+            \ 'xs:normalizedString',
+            \ 'xs:positiveInteger',
+            \ 'xs:time',
+            \ 'xs:QName',
+            \ 'xs:unsignedByte',
+            \ 'xs:unsignedInt',
+            \ 'xs:unsignedLong',
+            \ 'xs:unsignedShort',
+            \ 'xs:yearMonthDuration'
+            \ ]
+"}}}
+
+let s:all_types = s:generic_types + s:atomic_types
+
+" Derived from using _ctags options to generate tags from MarkLogic6
+" geospatial completion function names {{{
+" let s:COMMON_geospatial_functions {{{
+let s:COMMON_geospatial_functions = [
+            \ 'geospatial-query',
+            \ 'geospatial-query',
+            \ 'geospatial-query-from-elements',
+            \ 'geospatial-query-from-elements',
+            \ 'point',
+            \ 'circle',
+            \ 'box',
+            \ 'polygon'
+            \ ]
+" }}}
+
+let s:geo_functions = [ ]
+let s:all_geo_functions =
+            \ s:COMMON_geospatial_functions + s:geo_functions
+
+let s:georss_functions = [ ]
+let s:all_georss_functions =
+            \ s:COMMON_geospatial_functions + s:georss_functions
+
+let s:gml_functions = [
+            \ 'DEFAULT-WEIGHT',
+            \ 'interior-polygon'
+            \ ]
+let s:all_gml_functions =
+            \ s:COMMON_geospatial_functions + s:gml_functions
+
+let s:kml_functions = [
+            \ 'DEFAULT-WEIGHT',
+            \ 'interior-polygon'
+            \ ]
+let s:all_kml_functions =
+            \ s:COMMON_geospatial_functions + s:kml_functions
+
+
+let s:mcgm_functions = [
+            \ 'DEFAULT-WEIGHT'
+            \ ]
+let s:all_mcgm_functions =
+            \ s:COMMON_geospatial_functions + s:mcgm_functions
+"}}}
+
+" 8/3/2010  leaving out XInclude stuff intentionally...
+
+" Added function names from MarkLogic6 above - 10/8/2012
+let s:geospatial_namespaces       = ["geo", "georss", "gml", "kml", "mcgm"]
+
+let s:library_modules_namespaces  = ["admin", "alert", "dls", "entity", "exsl", "functx", "pki", "search", "sec", "spell", "thsr", "trgr", "ooxml"]
+let s:cpf_function_namespaces     = ["cpf", "css", "dbk", "dom", "cvt", "lnk", "msword", "pdf", "p", "ppt", "xhtml"]
+let s:builtin_function_namespaces = ["cts", "dbg", "fn", "map", "math", "prof",  "xdmp"]
+
+" From spec: 'Certain namespace prefixes are predeclared by XQuery and
+" bound to fixed namespace URIs. These namespace prefixes are as follows:'
+let s:predeclared_namespaces = ['fn', 'xs', 'local', 'xsi', 'xml']
+
+let s:ALL_FUNCTION_NAMESPACES = 
+            \ s:library_modules_namespaces +
+            \ s:cpf_function_namespaces +
+            \ s:builtin_function_namespaces +
+            \ s:predeclared_namespaces +
+            \ s:geospatial_namespaces
+
+"  When completing a namespace, the user will almost 
+"  always want the colon after it too!
+"
+"   --> see javascriptcomplete.vim:583
+"
+
 function! xquery#omni#complete(findstart, base)
 
     if a:findstart
@@ -894,892 +1751,33 @@ function! xquery#omni#complete(findstart, base)
 
         return start
     else
-
-
-
-
-        " let ctsgeospatial_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/GeospatialBuiltins.html
-        let ctsgeospatial_functions = [
-                    \ 'arc-intersection',
-                    \ 'bearing',
-                    \ 'bounding-boxes',
-                    \ 'box',
-                    \ 'box-east',
-                    \ 'box-intersects',
-                    \ 'box-north',
-                    \ 'box-south',
-                    \ 'box-west',
-                    \ 'circle',
-                    \ 'circle-center',
-                    \ 'circle-intersects',
-                    \ 'circle-radius',
-                    \ 'complex-polygon',
-                    \ 'complex-polygon-contains',
-                    \ 'complex-polygon-inner',
-                    \ 'complex-polygon-intersects',
-                    \ 'complex-polygon-outer',
-                    \ 'destination',
-                    \ 'distance',
-                    \ 'linestring',
-                    \ 'linestring-vertices',
-                    \ 'parse-wkt',
-                    \ 'point',
-                    \ 'point-latitude',
-                    \ 'point-longitude',
-                    \ 'polygon',
-                    \ 'polygon-contains',
-                    \ 'polygon-intersects',
-                    \ 'polygon-vertices',
-                    \ 'shortest-distance',
-                    \ 'to-wkt']
-        "}}}
-
-        " let ctsgeospatial_lexicons_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/GeospatialLexicons.html
-        let ctsgeospatial_lexicons_functions = [
-                    \ 'element-attribute-pair-geospatial-boxes',
-                    \ 'element-attribute-pair-geospatial-value-match',
-                    \ 'element-attribute-pair-geospatial-values',
-                    \ 'element-attribute-value-geospatial-co-occurrences',
-                    \ 'element-child-geospatial-boxes',
-                    \ 'element-child-geospatial-value-match',
-                    \ 'element-child-geospatial-values',
-                    \ 'element-geospatial-boxes',
-                    \ 'element-geospatial-value-match',
-                    \ 'element-geospatial-values',
-                    \ 'element-pair-geospatial-boxes',
-                    \ 'element-pair-geospatial-value-match',
-                    \ 'element-pair-geospatial-values',
-                    \ 'element-value-geospatial-co-occurrences',
-                    \ 'geospatial-co-occurrences']
-        "}}}
-
-        " http://community.marklogic.com/pubs/5.0/apidocs/Clusterer.html
-        let cts_clusterer_functions = ['cluster']
-
-        let all_ctsfunctions = 
-                    \ s:cts_classifier_functions +
-                    \ s:cts_query_constructor_functions +
-                    \ s:cts_lexicon_functions +
-                    \ s:cts_search_functions +
-                    \ cts_clusterer_functions
-
-        " let search_api_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/SearchAPI.html
-        let search_api_functions = [
-                    \ 'check-options',
-                    \ 'estimate',
-                    \ 'get-default-options',
-                    \ 'parse',
-                    \ 'remove-constraint',
-                    \ 'resolve',
-                    \ 'resolve-nodes', 
-                    \ 'search', 
-                    \ 'snippet', 
-                    \ 'suggest', 
-                    \ 'unparse']
-        "}}}
-
-        " let xdmp_admin_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/AdminBuiltins.html
-        let xdmp_admin_functions = [
-                    \ 'database-backup',
-                    \ 'database-backup-cancel',
-                    \ 'database-backup-purge',
-                    \ 'database-backup-status',
-                    \ 'database-backup-validate',
-                    \ 'database-restore',
-                    \ 'database-restore-cancel',
-                    \ 'database-restore-status',
-                    \ 'database-restore-validate',
-                    \ 'filesystem-directory',
-                    \ 'filesystem-file',
-                    \ 'filesystem-file-exists',
-                    \ 'filesystem-file-length',
-                    \ 'forest-backup',
-                    \ 'forest-clear',
-                    \ 'forest-open-replica',
-                    \ 'forest-restart',
-                    \ 'forest-restore',
-                    \ 'forest-rollback',
-                    \ 'merge-cancel',
-                    \ 'restart',
-                    \ 'shutdown',
-                    \ 'start-journal-archiving',
-                    \ 'stop-journal-archiving']
-        "}}}
-
-        " let xdmp_appserver_functions = ["{{{
-        let xdmp_appserver_functions = [
-                    \ 'add-response-header',
-                    \ 'get-original-url',
-                    \ 'get-request-body',
-                    \ 'get-request-client-address',
-                    \ 'get-request-client-certificate',
-                    \ 'get-request-field',
-                    \ 'get-request-field-content-type',
-                    \ 'get-request-field-filename',
-                    \ 'get-request-field-names',
-                    \ 'get-request-header',
-                    \ 'get-request-header-names',
-                    \ 'get-request-method',
-                    \ 'get-request-path',
-                    \ 'get-request-port',
-                    \ 'get-request-protocol',
-                    \ 'get-request-url',
-                    \ 'get-request-username',
-                    \ 'get-response-code',
-                    \ 'get-response-encoding',
-                    \ 'get-server-field',
-                    \ 'get-server-field-names',
-                    \ 'get-session-field',
-                    \ 'get-session-field-names',
-                    \ 'get-url-rewriter-path',
-                    \ 'login',
-                    \ 'logout',
-                    \ 'redirect-response',
-                    \ 'set-request-time-limit',
-                    \ 'set-response-code',
-                    \ 'set-response-content-type',
-                    \ 'set-response-encoding',
-                    \ 'set-server-field',
-                    \ 'set-server-field-privilege',
-                    \ 'set-session-field',
-                    \ 'uri-is-file',
-                    \ 'url-decode',
-                    \ 'url-encode',
-                    \ 'x509-certificate-extract']
-        "}}}
-
-        " let xdmp_document_conversion_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/Document-Conversion.html
-        let xdmp_document_conversion_functions = [
-                    \ 'document-filter', 
-                    \ 'excel-convert', 
-                    \ 'gunzip', 
-                    \ 'gzip', 
-                    \ 'pdf-convert', 
-                    \ 'powerpoint-convert', 
-                    \ 'tidy', 
-                    \ 'word-convert',
-                    \ 'zip-create',
-                    \ 'zip-get',
-                    \ 'zip-manifest']
-        "}}}
-
-        " let exsl_extension_functions = ["{{{
-        " part of http://community.marklogic.com/pubs/5.0/apidocs/Extension.html
-        let exsl_extension_functions = [
-                    \ 'node-set',
-                    \ 'object-type']
-        "}}}
-
-        " let xdmp_extension_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/Extension.html
-        let xdmp_extension_functions = [
-                    \ 'access',
-                    \ 'add64',
-                    \ 'and64',
-                    \ 'apply',
-                    \ 'architecture',
-                    \ 'base64-decode',
-                    \ 'base64-encode',
-                    \ 'binary-decode',
-                    \ 'binary-is-external',
-                    \ 'binary-is-large',
-                    \ 'binary-is-small',
-                    \ 'binary-size',
-                    \ 'castable-as',
-                    \ 'cluster',
-                    \ 'cluster-name',
-                    \ 'collation-canonical-uri',
-                    \ 'collection-locks',
-                    \ 'collection-properties',
-                    \ 'configuration-timestamp',
-                    \ 'crypt',
-                    \ 'current-last',
-                    \ 'current-position',
-                    \ 'database',
-                    \ 'database-forests',
-                    \ 'database-global-nonblocking-timestamp',
-                    \ 'database-is-replica',
-                    \ 'database-name',
-                    \ 'database-nonblocking-timestamp',
-                    \ 'databases',
-                    \ 'describe',
-                    \ 'diacritic-less',
-                    \ 'directory',
-                    \ 'directory-locks',
-                    \ 'directory-properties',
-                    \ 'document-forest',
-                    \ 'document-get',
-                    \ 'document-get-collections',
-                    \ 'document-get-properties',
-                    \ 'document-get-quality',
-                    \ 'document-locks',
-                    \ 'document-properties',
-                    \ 'elapsed-time',
-                    \ 'element-content-type',
-                    \ 'email',
-                    \ 'encoding-language-detect',
-                    \ 'estimate',
-                    \ 'eval',
-                    \ 'eval-in',
-                    \ 'exists',
-                    \ 'external-binary',
-                    \ 'external-binary-path',
-                    \ 'foreign-clusters',
-                    \ 'forest',
-                    \ 'forest-databases',
-                    \ 'forest-host',
-                    \ 'forest-name',
-                    \ 'forests',
-                    \ 'format-number',
-                    \ 'from-json',
-                    \ 'function',
-                    \ 'function-module',
-                    \ 'function-name',
-                    \ 'get',
-                    \ 'get-orphaned-binaries',
-                    \ 'group',
-                    \ 'group-hosts',
-                    \ 'group-name',
-                    \ 'group-servers',
-                    \ 'groups',
-                    \ 'hash32',
-                    \ 'hash64',
-                    \ 'hex-to-integer',
-                    \ 'hmac-md5',
-                    \ 'hmac-sha1',
-                    \ 'hmac-sha256',
-                    \ 'hmac-sha512',
-                    \ 'host',
-                    \ 'host-forests',
-                    \ 'host-name',
-                    \ 'hosts',
-                    \ 'http-delete',
-                    \ 'http-get',
-                    \ 'http-head',
-                    \ 'http-options',
-                    \ 'http-post',
-                    \ 'http-put',
-                    \ 'integer-to-hex',
-                    \ 'integer-to-octal',
-                    \ 'invoke',
-                    \ 'invoke-in',
-                    \ 'key-from-QName',
-                    \ 'log',
-                    \ 'log-level',
-                    \ 'lshift64',
-                    \ 'md5',
-                    \ 'modules-database',
-                    \ 'modules-root',
-                    \ 'mul64',
-                    \ 'node-database',
-                    \ 'node-kind',
-                    \ 'node-uri',
-                    \ 'not64',
-                    \ 'octal-to-integer',
-                    \ 'or64',
-                    \ 'parse-dateTime',
-                    \ 'parse-yymmdd',
-                    \ 'path',
-                    \ 'plan',
-                    \ 'platform',
-                    \ 'pretty-print',
-                    \ 'product-edition',
-                    \ 'QName-from-key',
-                    \ 'query-meters',
-                    \ 'query-trace',
-                    \ 'quote',
-                    \ 'random',
-                    \ 'remove-orphaned-binary',
-                    \ 'request',
-                    \ 'request-timestamp',
-                    \ 'rethrow',
-                    \ 'rshift64',
-                    \ 'schema-database',
-                    \ 'security-database',
-                    \ 'server',
-                    \ 'server-name',
-                    \ 'servers',
-                    \ 'set',
-                    \ 'sha1',
-                    \ 'sha256',
-                    \ 'sha512',
-                    \ 'sleep',
-                    \ 'spawn',
-                    \ 'spawn-in',
-                    \ 'step64',
-                    \ 'strftime',
-                    \ 'subbinary',
-                    \ 'timestamp-to-wallclock',
-                    \ 'to-json',
-                    \ 'trace',
-                    \ 'triggers-database',
-                    \ 'unpath',
-                    \ 'unquote',
-                    \ 'uri-content-type',
-                    \ 'uri-format',
-                    \ 'user-last-login',
-                    \ 'validate',
-                    \ 'value',
-                    \ 'version',
-                    \ 'wallclock-to-timestamp',
-                    \ 'with-namespaces',
-                    \ 'xor64',
-                    \ 'xquery-version',
-                    \ 'xslt-eval',
-                    \ 'xslt-invoke']
-        "}}}
-
-        " let xdmp_security_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/Security.html
-        let xdmp_security_functions = [
-                    \ 'amp',
-                    \ 'amp-roles',
-                    \ 'can-grant-roles',
-                    \ 'default-collections',
-                    \ 'default-permissions',
-                    \ 'document-get-permissions',
-                    \ 'get-current-roles',
-                    \ 'get-current-user',
-                    \ 'get-request-user',
-                    \ 'has-privilege',
-                    \ 'permission',
-                    \ 'privilege',
-                    \ 'privilege-roles',
-                    \ 'role',
-                    \ 'role-roles',
-                    \ 'security-assert',
-                    \ 'user',
-                    \ 'user-roles']
-        "}}}
-
-        " let xdmp_server_monitoring_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/ServerMonitoring.html
-        let xdmp_server_monitoring_functions = [
-                    \ 'cache-status',
-                    \ 'foreign-cluster-status',
-                    \ 'forest-counts',
-                    \ 'forest-status',
-                    \ 'host-status',
-                    \ 'request-cancel',
-                    \ 'request-status',
-                    \ 'server-status']
-        "}}}
-
-        " let xdmp_update_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/UpdateBuiltins.html
-        let xdmp_update_functions = [
-                    \ 'collection-delete',
-                    \ 'directory-create',
-                    \ 'directory-delete',
-                    \ 'document-add-collections',
-                    \ 'document-add-permissions',
-                    \ 'document-add-properties',
-                    \ 'document-assign',
-                    \ 'document-delete',
-                    \ 'document-insert',
-                    \ 'document-load',
-                    \ 'document-remove-collections',
-                    \ 'document-remove-permissions',
-                    \ 'document-remove-properties',
-                    \ 'document-set-collections',
-                    \ 'document-set-permissions',
-                    \ 'document-set-properties',
-                    \ 'document-set-property',
-                    \ 'document-set-quality',
-                    \ 'load',
-                    \ 'lock-acquire',
-                    \ 'lock-for-update',
-                    \ 'lock-release',
-                    \ 'merge',
-                    \ 'merging',
-                    \ 'node-delete',
-                    \ 'node-insert-after',
-                    \ 'node-insert-before',
-                    \ 'node-insert-child',
-                    \ 'node-replace',
-                    \ 'save']
-        "}}}
-
-        let COMMON_xdmp_functions = [
-                    \ 'get-request-field', 
-                    \ 'document-insert',
-                    \ 'node-replace',
-                    \ 'node-insert-child',
-                    \ 'node-delete',
-                    \ 'redirect-response']
-
-        let all_xdmp_functions = 
-                    \ COMMON_xdmp_functions +
-                    \ xdmp_extension_functions +
-                    \ xdmp_update_functions +
-                    \ xdmp_security_functions +
-                    \ xdmp_admin_functions + 
-                    \ xdmp_appserver_functions + 
-                    \ xdmp_document_conversion_functions +
-                    \ xdmp_server_monitoring_functions
-
-        " let fnfunctions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/W3C.html
-        let fnfunctions = [
-                    \ 'abs',
-                    \ 'adjust-date-to-timezone',
-                    \ 'adjust-dateTime-to-timezone',
-                    \ 'adjust-time-to-timezone',
-                    \ 'analyze-string',
-                    \ 'avg',
-                    \ 'base-uri',
-                    \ 'boolean',
-                    \ 'ceiling',
-                    \ 'codepoint-equal',
-                    \ 'codepoints-to-string',
-                    \ 'collection',
-                    \ 'compare',
-                    \ 'concat',
-                    \ 'contains',
-                    \ 'count',
-                    \ 'current',
-                    \ 'current-date',
-                    \ 'current-dateTime',
-                    \ 'current-group',
-                    \ 'current-grouping-key',
-                    \ 'current-time',
-                    \ 'data',
-                    \ 'day-from-date',
-                    \ 'day-from-dateTime',
-                    \ 'days-from-duration',
-                    \ 'deep-equal',
-                    \ 'default-collation',
-                    \ 'distinct-nodes',
-                    \ 'distinct-values',
-                    \ 'doc',
-                    \ 'doc-available',
-                    \ 'document',
-                    \ 'document-uri',
-                    \ 'element-available',
-                    \ 'empty',
-                    \ 'encode-for-uri',
-                    \ 'ends-with',
-                    \ 'error',
-                    \ 'escape-html-uri',
-                    \ 'escape-uri',
-                    \ 'exactly-one',
-                    \ 'exists',
-                    \ 'expanded-QName',
-                    \ 'false',
-                    \ 'floor',
-                    \ 'format-date',
-                    \ 'format-dateTime',
-                    \ 'format-number',
-                    \ 'format-time',
-                    \ 'function-available',
-                    \ 'generate-id',
-                    \ 'hours-from-dateTime',
-                    \ 'hours-from-duration',
-                    \ 'hours-from-time',
-                    \ 'id',
-                    \ 'idref',
-                    \ 'implicit-timezone',
-                    \ 'in-scope-prefixes',
-                    \ 'index-of',
-                    \ 'insert-before',
-                    \ 'iri-to-uri',
-                    \ 'key',
-                    \ 'lang',
-                    \ 'last',
-                    \ 'local-name',
-                    \ 'local-name-from-QName',
-                    \ 'lower-case',
-                    \ 'matches',
-                    \ 'max',
-                    \ 'min',
-                    \ 'minutes-from-dateTime',
-                    \ 'minutes-from-duration',
-                    \ 'minutes-from-time',
-                    \ 'month-from-date',
-                    \ 'month-from-dateTime',
-                    \ 'months-from-duration',
-                    \ 'name',
-                    \ 'namespace-uri',
-                    \ 'namespace-uri-for-prefix',
-                    \ 'namespace-uri-from-QName',
-                    \ 'nilled',
-                    \ 'node-kind',
-                    \ 'node-name',
-                    \ 'normalize-space',
-                    \ 'normalize-unicode',
-                    \ 'not',
-                    \ 'number',
-                    \ 'one-or-more',
-                    \ 'position',
-                    \ 'prefix-from-QName',
-                    \ 'QName',
-                    \ 'regex-group',
-                    \ 'remove',
-                    \ 'replace',
-                    \ 'resolve-QName',
-                    \ 'resolve-uri',
-                    \ 'reverse',
-                    \ 'root',
-                    \ 'round',
-                    \ 'round-half-to-even',
-                    \ 'seconds-from-dateTime',
-                    \ 'seconds-from-duration',
-                    \ 'seconds-from-time',
-                    \ 'starts-with',
-                    \ 'static-base-uri',
-                    \ 'string',
-                    \ 'string-join',
-                    \ 'string-length',
-                    \ 'string-pad',
-                    \ 'string-to-codepoints',
-                    \ 'subsequence',
-                    \ 'substring',
-                    \ 'substring-after',
-                    \ 'substring-before',
-                    \ 'subtract-dateTimes-yielding-dayTimeDuration',
-                    \ 'subtract-dateTimes-yielding-yearMonthDuration',
-                    \ 'sum',
-                    \ 'system-property',
-                    \ 'timezone-from-date',
-                    \ 'timezone-from-dateTime',
-                    \ 'timezone-from-time',
-                    \ 'tokenize',
-                    \ 'trace',
-                    \ 'translate',
-                    \ 'true',
-                    \ 'type-available',
-                    \ 'unordered',
-                    \ 'unparsed-entity-public-id',
-                    \ 'unparsed-entity-uri',
-                    \ 'unparsed-text',
-                    \ 'unparsed-text-available',
-                    \ 'upper-case',
-                    \ 'year-from-date',
-                    \ 'year-from-dateTime',
-                    \ 'years-from-duration',
-                    \ 'zero-or-one']
-        "}}}
-
-        " let functxFunctions = ["{{{
-        " http://www.xqueryfunctions.com/xq/alpha.html
-        let functxFunctions = [
-                    \ 'add-attributes',
-                    \ 'add-months',
-                    \ 'add-or-update-attributes',
-                    \ 'all-whitespace',
-                    \ 'are-distinct-values',
-                    \ 'atomic-type',
-                    \ 'avg-empty-is-zero',
-                    \ 'between-exclusive',
-                    \ 'between-inclusive',
-                    \ 'camel-case-to-words',
-                    \ 'capitalize-first',
-                    \ 'change-element-names-deep',
-                    \ 'change-element-ns-deep',
-                    \ 'change-element-ns',
-                    \ 'chars',
-                    \ 'contains-any-of',
-                    \ 'contains-case-insensitive',
-                    \ 'contains-word',
-                    \ 'copy-attributes',
-                    \ 'date',
-                    \ 'dateTime',
-                    \ 'day-in-year',
-                    \ 'day-of-week-abbrev-en',
-                    \ 'day-of-week-name-en',
-                    \ 'day-of-week',
-                    \ 'dayTimeDuration',
-                    \ 'days-in-month',
-                    \ 'depth-of-node',
-                    \ 'distinct-attribute-names',
-                    \ 'distinct-deep',
-                    \ 'distinct-element-names',
-                    \ 'distinct-element-paths',
-                    \ 'distinct-nodes',
-                    \ 'duration-from-timezone',
-                    \ 'dynamic-path',
-                    \ 'escape-for-regex',
-                    \ 'exclusive-or',
-                    \ 'first-day-of-month',
-                    \ 'first-day-of-year',
-                    \ 'first-node',
-                    \ 'follows-not-descendant',
-                    \ 'format-as-title-en',
-                    \ 'fragment-from-uri',
-                    \ 'get-matches-and-non-matches',
-                    \ 'get-matches',
-                    \ 'has-element-only-content',
-                    \ 'has-empty-content',
-                    \ 'has-mixed-content',
-                    \ 'has-simple-content',
-                    \ 'id-from-element',
-                    \ 'id-untyped',
-                    \ 'if-absent',
-                    \ 'if-empty',
-                    \ 'index-of-deep-equal-node',
-                    \ 'index-of-match-first',
-                    \ 'index-of-node',
-                    \ 'index-of-string-first',
-                    \ 'index-of-string-last',
-                    \ 'index-of-string',
-                    \ 'insert-string',
-                    \ 'is-a-number',
-                    \ 'is-absolute-uri',
-                    \ 'is-ancestor',
-                    \ 'is-descendant',
-                    \ 'is-leap-year',
-                    \ 'is-node-among-descendants-deep-equal',
-                    \ 'is-node-among-descendants',
-                    \ 'is-node-in-sequence-deep-equal',
-                    \ 'is-node-in-sequence',
-                    \ 'is-value-in-sequence',
-                    \ 'last-day-of-month',
-                    \ 'last-day-of-year',
-                    \ 'last-node',
-                    \ 'leaf-elements',
-                    \ 'left-trim',
-                    \ 'line-count',
-                    \ 'lines',
-                    \ 'max-depth',
-                    \ 'max-determine-type',
-                    \ 'max-line-length',
-                    \ 'max-node',
-                    \ 'max-string',
-                    \ 'min-determine-type',
-                    \ 'min-node',
-                    \ 'min-non-empty-string',
-                    \ 'min-string',
-                    \ 'mmddyyyy-to-date',
-                    \ 'month-abbrev-en',
-                    \ 'month-name-en',
-                    \ 'name-test',
-                    \ 'namespaces-in-use',
-                    \ 'next-day',
-                    \ 'node-kind',
-                    \ 'non-distinct-values',
-                    \ 'number-of-matches',
-                    \ 'open-ref-document',
-                    \ 'ordinal-number-en',
-                    \ 'pad-integer-to-length',
-                    \ 'pad-string-to-length',
-                    \ 'path-to-node-with-pos',
-                    \ 'path-to-node',
-                    \ 'precedes-not-ancestor',
-                    \ 'previous-day',
-                    \ 'remove-attributes-deep',
-                    \ 'remove-attributes',
-                    \ 'remove-elements-deep',
-                    \ 'remove-elements-not-contents',
-                    \ 'remove-elements',
-                    \ 'repeat-string',
-                    \ 'replace-beginning',
-                    \ 'replace-element-values',
-                    \ 'replace-first',
-                    \ 'replace-multi',
-                    \ 'reverse-string',
-                    \ 'right-trim',
-                    \ 'scheme-from-uri',
-                    \ 'sequence-deep-equal',
-                    \ 'sequence-node-equal-any-order',
-                    \ 'sequence-node-equal',
-                    \ 'sequence-type',
-                    \ 'siblings-same-name',
-                    \ 'siblings',
-                    \ 'sort-as-numeric',
-                    \ 'sort-case-insensitive',
-                    \ 'sort-document-order',
-                    \ 'sort',
-                    \ 'substring-after-if-contains',
-                    \ 'substring-after-last-match',
-                    \ 'substring-after-last',
-                    \ 'substring-after-match',
-                    \ 'substring-before-if-contains',
-                    \ 'substring-before-last-match',
-                    \ 'substring-before-last',
-                    \ 'substring-before-match',
-                    \ 'time',
-                    \ 'timezone-from-duration',
-                    \ 'total-days-from-duration',
-                    \ 'total-hours-from-duration',
-                    \ 'total-minutes-from-duration',
-                    \ 'total-months-from-duration',
-                    \ 'total-seconds-from-duration',
-                    \ 'total-years-from-duration',
-                    \ 'trim',
-                    \ 'update-attributes',
-                    \ 'value-except',
-                    \ 'value-intersect',
-                    \ 'value-union',
-                    \ 'word-count',
-                    \ 'words-to-camel-case',
-                    \ 'wrap-values-in-elements',
-                    \ 'yearMonthDuration']
-        "}}}
-
-        " 8/6/2010  Putting variable types here 
-
-        "  see Walmsley:490  in index!
-        "  atomicType chart?   Walmsley:144
-        "  generic sequence types?  Walmsley:152
-        "
-        "    wat about.... 
-        "       comment()
-        "       processing-instruction()
-        "       document-node()
-        "
-        " let generic_types = ["{{{
-        let generic_types = [
-                    \ 'item()', 
-                    \ 'node()',
-                    \ 'text()',
-                    \ 'empty-sequence()',
-                    \ 'element()', 
-                    \ 'document()'
-                    \ ]
-        "}}}
-
-        " these are prefixed with xs:  
-        " let atomic_types = ["{{{
-        let atomic_types = [
-                    \ 'xs:string',
-                    \ 'xs:dateTime',
-                    \ 'xs:anyAtomicType',
-                    \ 'xs:anyType',
-                    \ 'xs:anyURI',
-                    \ 'xs:base64Binary',
-                    \ 'xs:boolean',
-                    \ 'xs:date',
-                    \ 'xs:dayTimeDuration',
-                    \ 'xs:decimal',
-                    \ 'xs:double',
-                    \ 'xs:duration',
-                    \ 'xs:float',
-                    \ 'xs:gDay',
-                    \ 'xs:gMonth',
-                    \ 'xs:gMonthDay',
-                    \ 'xs:gYearMonth',
-                    \ 'xs:gYear',
-                    \ 'xs:hexBinary',
-                    \ 'xs:integer',
-                    \ 'xs:negativeInteger',
-                    \ 'xs:nonPositiveInteger',
-                    \ 'xs:nonNegativeInteger',
-                    \ 'xs:normalizedString',
-                    \ 'xs:positiveInteger',
-                    \ 'xs:time',
-                    \ 'xs:QName',
-                    \ 'xs:unsignedByte',
-                    \ 'xs:unsignedInt',
-                    \ 'xs:unsignedLong',
-                    \ 'xs:unsignedShort',
-                    \ 'xs:yearMonthDuration'
-                    \ ]
-        "}}}
-
-        let all_types = generic_types + atomic_types
-
-        " Derived from using _ctags options to generate tags from MarkLogic6
-        " geospatial completion function names {{{
-        " let COMMON_geospatial_functions {{{
-        let COMMON_geospatial_functions = [
-                    \ 'geospatial-query',
-                    \ 'geospatial-query',
-                    \ 'geospatial-query-from-elements',
-                    \ 'geospatial-query-from-elements',
-                    \ 'point',
-                    \ 'circle',
-                    \ 'box',
-                    \ 'polygon'
-                    \ ]
-        " }}}
-
-        let geo_functions = [ ]
-        let all_geo_functions =
-                    \ COMMON_geospatial_functions + geo_functions
-
-        let georss_functions = [ ]
-        let all_georss_functions =
-                    \ COMMON_geospatial_functions + georss_functions
-
-        let gml_functions = [
-                    \ 'DEFAULT-WEIGHT',
-                    \ 'interior-polygon'
-                    \ ]
-        let all_gml_functions =
-                    \ COMMON_geospatial_functions + gml_functions
-
-        let kml_functions = [
-                    \ 'DEFAULT-WEIGHT',
-                    \ 'interior-polygon'
-                    \ ]
-        let all_kml_functions =
-                    \ COMMON_geospatial_functions + kml_functions
-
-
-        let mcgm_functions = [
-                    \ 'DEFAULT-WEIGHT'
-                    \ ]
-        let all_mcgm_functions =
-                    \ COMMON_geospatial_functions + mcgm_functions
-        "}}}
-
-        " 8/3/2010  leaving out XInclude stuff intentionally...
-
-        " Added function names from MarkLogic6 above - 10/8/2012
-        let geospatial_namespaces       = ["geo", "georss", "gml", "kml", "mcgm"]
-
-        let library_modules_namespaces  = ["admin", "alert", "dls", "entity", "exsl", "functx", "pki", "search", "sec", "spell", "thsr", "trgr", "ooxml"]
-        let cpf_function_namespaces     = ["cpf", "css", "dbk", "dom", "cvt", "lnk", "msword", "pdf", "p", "ppt", "xhtml"]
-        let builtin_function_namespaces = ["cts", "dbg", "fn", "map", "math", "prof",  "xdmp"]
-
-        " From spec: 'Certain namespace prefixes are predeclared by XQuery and
-        " bound to fixed namespace URIs. These namespace prefixes are as follows:'
-        let predeclared_namespaces = ['fn', 'xs', 'local', 'xsi', 'xml']
-
-        let ALL_FUNCTION_NAMESPACES = 
-                    \ library_modules_namespaces +
-                    \ cpf_function_namespaces +
-                    \ builtin_function_namespaces +
-                    \ predeclared_namespaces +
-                    \ geospatial_namespaces
-
-        "  When completing a namespace, the user will almost 
-        "  always want the colon after it too!
-        "
-        "   --> see javascriptcomplete.vim:583
-        "
-        call map(ALL_FUNCTION_NAMESPACES, 'v:val.":"')
+        call map(s:ALL_FUNCTION_NAMESPACES, 'v:val.":"')
 
         let namespace            = a:base
         let function_completions = []
         let final_menu           = []
 
         if namespace =~ 'xdmp'
-            call map(all_xdmp_functions, '"xdmp:" . v:val . "("')
-            let function_completions = copy(all_xdmp_functions)
+            call map(s:all_xdmp_functions, '"xdmp:" . v:val . "("')
+            let function_completions = copy(s:all_xdmp_functions)
         elseif namespace =~ 'exsl'
-            call map(exsl_extension_functions, '"exsl:" . v:val . "("')
-            let function_completions = copy(exsl_extension_functions)
+            call map(s:exsl_extension_functions, '"exsl:" . v:val . "("')
+            let function_completions = copy(s:exsl_extension_functions)
         elseif namespace =~ 'cts'
-            call map(all_ctsfunctions, '"cts:" . v:val . "("')
-            let function_completions = copy(all_ctsfunctions)
+            call map(s:all_ctsfunctions, '"cts:" . v:val . "("')
+            let function_completions = copy(s:all_ctsfunctions)
         elseif namespace =~ 'cpf'
             call map(s:all_cpffunctions, '"cpf:" . v:val . "("')
             let function_completions = copy(s:all_cpffunctions)
         elseif namespace =~ 'functx'
-            call map(functxFunctions, '"functx:" . v:val . "("')
-            let function_completions = copy(functxFunctions)
+            call map(s:functxFunctions, '"functx:" . v:val . "("')
+            let function_completions = copy(s:functxFunctions)
         elseif namespace =~ 'fn'
-            call map(fnfunctions, '"fn:" . v:val . "("')
-            let function_completions = copy(fnfunctions)
+            call map(s:fnfunctions, '"fn:" . v:val . "("')
+            let function_completions = copy(s:fnfunctions)
         elseif namespace =~ 'search'
-            call map(search_api_functions, '"search:" . v:val . "("')
-            let function_completions = copy(search_api_functions)
+            call map(s:search_api_functions, '"search:" . v:val . "("')
+            let function_completions = copy(s:search_api_functions)
         elseif namespace =~ 'admin'
             call map(s:admin_api_functions, '"admin:" . v:val . "("')
             let function_completions = copy(s:admin_api_functions)
@@ -1787,22 +1785,22 @@ function! xquery#omni#complete(findstart, base)
             call map(s:alertfunctions, '"alert:" . v:val . "("')
             let function_completions = copy(s:alertfunctions)
         elseif namespace =~ 'georss'
-            call map(all_georss_functions, '"georss:" . v:val . "("')
-            let function_completions = copy(all_georss_functions)
+            call map(s:all_georss_functions, '"georss:" . v:val . "("')
+            let function_completions = copy(s:all_georss_functions)
         elseif namespace =~ 'geo'
-            call map(all_geo_functions, '"geo:" . v:val . "("')
-            let function_completions = copy(all_geo_functions)
+            call map(s:all_geo_functions, '"geo:" . v:val . "("')
+            let function_completions = copy(s:all_geo_functions)
         elseif namespace =~ 'gml'
-            call map(all_gml_functions, '"gml:" . v:val . "("')
-            let function_completions = copy(all_gml_functions)
+            call map(s:all_gml_functions, '"gml:" . v:val . "("')
+            let function_completions = copy(s:all_gml_functions)
         elseif namespace =~ 'kml'
-            call map(all_kml_functions, '"kml:" . v:val . "("')
-            let function_completions = copy(all_kml_functions)
+            call map(s:all_kml_functions, '"kml:" . v:val . "("')
+            let function_completions = copy(s:all_kml_functions)
         elseif namespace =~ 'mcgm'
-            call map(all_mcgm_functions, '"mcgm:" . v:val . "("')
-            let function_completions = copy(all_mcgm_functions)
+            call map(s:all_mcgm_functions, '"mcgm:" . v:val . "("')
+            let function_completions = copy(s:all_mcgm_functions)
         elseif namespace =~ 'xs'
-            let function_completions = atomic_types
+            let function_completions = s:atomic_types
         endif
 
 
@@ -1898,7 +1896,7 @@ function! xquery#omni#complete(findstart, base)
         else 
             let res  = []
             let res2 = []
-            let values = evenmorekeywords + keywords + morekeywords + function_completions + ALL_FUNCTION_NAMESPACES + generic_types + predefined_entity_references
+            let values = evenmorekeywords + keywords + morekeywords + function_completions + s:ALL_FUNCTION_NAMESPACES + s:generic_types + predefined_entity_references
 
             for v in values
                 if v =~? '^'.a:base
