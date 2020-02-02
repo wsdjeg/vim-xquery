@@ -1,9 +1,3 @@
-" VIM Syntax file
-" 
-" Language:    XQuery
-" Maintainer:  Jeroen Pulles <jeroen.pulles@redslider.net>
-" Last Change: 19 August 2012
-" 
 if exists("b:current_syntax")
    finish
 endif
