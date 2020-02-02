@@ -1728,11 +1728,90 @@ let s:ALL_FUNCTION_NAMESPACES =
             \ s:predeclared_namespaces +
             \ s:geospatial_namespaces
 
-"  When completing a namespace, the user will almost 
-"  always want the colon after it too!
-"
-"   --> see javascriptcomplete.vim:583
-"
+"  let s:predefined_entity_references = ["{{{
+"  http://www.w3.org/TR/xquery/#dt-predefined-entity-reference
+let s:predefined_entity_references = [
+            \ '&amp;',
+            \ '&lt;',
+            \ '&gt;',
+            \ '&quot;',
+            \ '&apos;'
+            \ ]
+"}}}
+" see Walmsley p. 27 'Categories of Expressions'
+
+"let s:keywords = ["{{{
+let s:keywords = [
+            \ "for", 
+            \ "let", 
+            \ "where", 
+            \ "order by", 
+            \ "return", 
+            \ "some", 
+            \ "every", 
+            \ "in", 
+            \ "satisfies", 
+            \ "to", 
+            \ "union", 
+            \ "intersect", 
+            \ "except", 
+            \ "instance of", 
+            \ "typeswitch", 
+            \ "cast as", 
+            \ "castable as", 
+            \ "treat", 
+            \ 'variable',
+            \ "validate", 
+            \ "div", 
+            \ "idiv", 
+            \ "mod", 
+            \ "xquery version \"1.0-ml\";",
+            \ "xquery version \"0.9-ml\";",
+            \ "xquery version \"1.0\";",
+            \ "xquery version"
+            \ ]
+"}}}
+
+"  hmmm above ^ dont have everything 
+
+
+" let s:morekeywords = ["{{{
+let s:morekeywords = [
+            \ 'as',
+            \ 'declare',
+            \ 'declare function',
+            \ 'declare variable',
+            \ 'declare namespace',
+            \ 'declare option',
+            \ 'declare default',
+            \ 'default',
+            \ 'option',
+            \ 'collation',
+            \ 'element',
+            \ 'attribute',
+            \ 'function',
+            \ 'import',
+            \ 'import module',
+            \ 'import module namespace',
+            \ 'import schema',
+            \ 'module',
+            \ 'namespace',
+            \ 'module namespace',
+            \ 'external;',
+            \ 'encoding;',
+            \ 'ascending',
+            \ 'descending',
+            \ ]
+"}}}
+" let s:evenmorekeywords = ["{{{
+let s:evenmorekeywords = [
+            \ 'else',
+            \ 'else if',
+            \ 'then',
+            \ 'if'
+            \ ]
+"}}}
+
 
 function! xquery#omni#complete(findstart, base)
 
@@ -1804,99 +1883,15 @@ function! xquery#omni#complete(findstart, base)
         endif
 
 
-        " see Walmsley p. 27 'Categories of Expressions'
-
-        "let keywords = ["{{{
-        let keywords = [
-                    \ "for", 
-                    \ "let", 
-                    \ "where", 
-                    \ "order by", 
-                    \ "return", 
-                    \ "some", 
-                    \ "every", 
-                    \ "in", 
-                    \ "satisfies", 
-                    \ "to", 
-                    \ "union", 
-                    \ "intersect", 
-                    \ "except", 
-                    \ "instance of", 
-                    \ "typeswitch", 
-                    \ "cast as", 
-                    \ "castable as", 
-                    \ "treat", 
-                    \ 'variable',
-                    \ "validate", 
-                    \ "div", 
-                    \ "idiv", 
-                    \ "mod", 
-                    \ "xquery version \"1.0-ml\";",
-                    \ "xquery version \"0.9-ml\";",
-                    \ "xquery version \"1.0\";",
-                    \ "xquery version"
-                    \ ]
-        "}}}
-
-        "  hmmm above ^ dont have everything 
-
-        " let morekeywords = ["{{{
-        let morekeywords = [
-                    \ 'as',
-                    \ 'declare',
-                    \ 'declare function',
-                    \ 'declare variable',
-                    \ 'declare namespace',
-                    \ 'declare option',
-                    \ 'declare default',
-                    \ 'default',
-                    \ 'option',
-                    \ 'collation',
-                    \ 'element',
-                    \ 'attribute',
-                    \ 'function',
-                    \ 'import',
-                    \ 'import module',
-                    \ 'import module namespace',
-                    \ 'import schema',
-                    \ 'module',
-                    \ 'namespace',
-                    \ 'module namespace',
-                    \ 'external;',
-                    \ 'encoding;',
-                    \ 'ascending',
-                    \ 'descending',
-                    \ ]
-        "}}}
-
-        " let evenmorekeywords = ["{{{
-        let evenmorekeywords = [
-                    \ 'else',
-                    \ 'else if',
-                    \ 'then',
-                    \ 'if'
-                    \ ]
-        "}}}
-
-        "  let predefined_entity_references = ["{{{
-        "  http://www.w3.org/TR/xquery/#dt-predefined-entity-reference
-        let predefined_entity_references = [
-                    \ '&amp;',
-                    \ '&lt;',
-                    \ '&gt;',
-                    \ '&quot;',
-                    \ '&apos;'
-                    \ ]
-        "}}}
 
 
         if(a:base =~ '&$')
             "...the character right before the cursor is an ampersand"
-            return predefined_entity_references
+            return s:predefined_entity_references
         else 
             let res  = []
             let res2 = []
-            let values = evenmorekeywords + keywords + morekeywords + function_completions + s:ALL_FUNCTION_NAMESPACES + s:generic_types + predefined_entity_references
+            let values = s:evenmorekeywords + s:keywords + s:morekeywords + function_completions + s:ALL_FUNCTION_NAMESPACES + s:generic_types + s:predefined_entity_references
 
             for v in values
                 if v =~? '^'.a:base
