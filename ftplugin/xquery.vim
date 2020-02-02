@@ -29,6 +29,9 @@ if exists("b:did_ftplugin")
    delfunction xqueryft:BracketI
 endif
 let b:did_ftplugin = 1
+setlocal comments=sr:(:,mb::,ex::)
+setlocal formatoptions=croq
+setlocal textwidth=78
 
 " http://markmail.org/message/5vfzrb7ojvds5drx
 autocmd InsertEnter *.xqy,*.xql,*.xqe,*.xq set iskeyword+=-
