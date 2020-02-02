@@ -824,6 +824,59 @@ let s:cts_query_constructor_functions = [
             \ 'word-query']
 "}}}
 
+" let s:cts_lexicon_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/Lexicons.html
+let s:cts_lexicon_functions = [
+            \ 'avg',
+            \ 'collection-match',
+            \ 'collections',
+            \ 'count',
+            \ 'element-attribute-value-co-occurrences',
+            \ 'element-attribute-value-match',
+            \ 'element-attribute-value-ranges',
+            \ 'element-attribute-values',
+            \ 'element-attribute-word-match',
+            \ 'element-attribute-words',
+            \ 'element-value-co-occurrences',
+            \ 'element-value-match',
+            \ 'element-value-ranges',
+            \ 'element-values',
+            \ 'element-word-match',
+            \ 'element-words',
+            \ 'field-value-co-occurrences',
+            \ 'field-value-match',
+            \ 'field-value-ranges',
+            \ 'field-values',
+            \ 'field-word-match',
+            \ 'field-words',
+            \ 'frequency',
+            \ 'sum',
+            \ 'uri-match',
+            \ 'uris',
+            \ 'word-match',
+            \ 'words']
+"}}}
+
+" let s:cts_search_functions = ["{{{
+" http://community.marklogic.com/pubs/5.0/apidocs/SearchBuiltins.html
+let s:cts_search_functions = [
+            \ 'confidence',
+            \ 'contains',
+            \ 'deregister',
+            \ 'distinctive-terms',
+            \ 'entity-highlight',
+            \ 'fitness',
+            \ 'highlight',
+            \ 'quality',
+            \ 'register',
+            \ 'remainder',
+            \ 'score',
+            \ 'search',
+            \ 'stem',
+            \ 'tokenize',
+            \ 'walk']
+"}}}
+
 function! xquery#omni#complete(findstart, base)
 
     if a:findstart
@@ -902,67 +955,14 @@ function! xquery#omni#complete(findstart, base)
                     \ 'geospatial-co-occurrences']
         "}}}
 
-        " let cts_lexicon_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/Lexicons.html
-        let cts_lexicon_functions = [
-                    \ 'avg',
-                    \ 'collection-match',
-                    \ 'collections',
-                    \ 'count',
-                    \ 'element-attribute-value-co-occurrences',
-                    \ 'element-attribute-value-match',
-                    \ 'element-attribute-value-ranges',
-                    \ 'element-attribute-values',
-                    \ 'element-attribute-word-match',
-                    \ 'element-attribute-words',
-                    \ 'element-value-co-occurrences',
-                    \ 'element-value-match',
-                    \ 'element-value-ranges',
-                    \ 'element-values',
-                    \ 'element-word-match',
-                    \ 'element-words',
-                    \ 'field-value-co-occurrences',
-                    \ 'field-value-match',
-                    \ 'field-value-ranges',
-                    \ 'field-values',
-                    \ 'field-word-match',
-                    \ 'field-words',
-                    \ 'frequency',
-                    \ 'sum',
-                    \ 'uri-match',
-                    \ 'uris',
-                    \ 'word-match',
-                    \ 'words']
-        "}}}
-
-        " let cts_search_functions = ["{{{
-        " http://community.marklogic.com/pubs/5.0/apidocs/SearchBuiltins.html
-        let cts_search_functions = [
-                    \ 'confidence',
-                    \ 'contains',
-                    \ 'deregister',
-                    \ 'distinctive-terms',
-                    \ 'entity-highlight',
-                    \ 'fitness',
-                    \ 'highlight',
-                    \ 'quality',
-                    \ 'register',
-                    \ 'remainder',
-                    \ 'score',
-                    \ 'search',
-                    \ 'stem',
-                    \ 'tokenize',
-                    \ 'walk']
-        "}}}
-
         " http://community.marklogic.com/pubs/5.0/apidocs/Clusterer.html
         let cts_clusterer_functions = ['cluster']
 
         let all_ctsfunctions = 
                     \ s:cts_classifier_functions +
                     \ s:cts_query_constructor_functions +
-                    \ cts_lexicon_functions +
-                    \ cts_search_functions +
+                    \ s:cts_lexicon_functions +
+                    \ s:cts_search_functions +
                     \ cts_clusterer_functions
 
         " let search_api_functions = ["{{{
