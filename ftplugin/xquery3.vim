@@ -1,36 +1,3 @@
-" xquery.vim - <Leader>B or <C-CR> run buffer against marklogic as an xquery
-" Maintainer:   Darren Cole <http://github.com/coledarr/vim-xqmarklogic>
-" Version:      1.1.1
-" TODO: Add support for: GetLatestVimScripts: ### ### :AutoInstall: xqmarklogic
-" TODO: see *glvs-plugins* might not work, but should at least try
-" 
-" Inspired partly by: http://superiorautomaticdictionary.com/vim-nirvana-interactive-xquery-with-marklogic
-"
-" Assumes xq is setup
-" ==== xq.xqy ====
-"       xquery version "1.0-ml";
-"       
-"       let
-"           $db := xdmp:get-request-field("db", "Documents"),
-"           $xquery := xdmp:get-request-body("text")
-"       return
-"           try {
-"               xdmp:eval($xquery, (), <options xmlns="xdmp:eval"><database>{xdmp:database($db)}</database></options>)
-"           }
-"           catch($e) {
-"               $e
-"           }
-" ==== end xq.xqy ====
-" The above script will execute whatever it is sent with xdmp:eval, so it can do
-" pretty anything to the database
-"
-" Assumes xml responses, for now tries to break up lines and re-indent For
-" large responses this can be slow
-"
-" TODO output something more useful when curl return errors or status
-" TODO should probably use <Plug>...
-
-
 if exists('b:loaded_xqmarklogic')
     finish
 endif
@@ -354,5 +321,3 @@ function! s:QueryGenericMarkLogic(data, bufferQuery)
         endif
     endif
 endfunction
-
-" vim: foldmethod=marker foldlevel=0:
