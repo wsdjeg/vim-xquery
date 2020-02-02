@@ -771,7 +771,7 @@ let s:alertfunctions = [
 
 " let cpffunctions = ["{{{
 " 2013-08-12 http://http://docs.marklogic.com/cpf
-let all_cpffunctions = [
+let s:all_cpffunctions = [
             \ 'check-transition',
             \ 'document-get-error',
             \ 'document-get-last-updated',
@@ -1769,8 +1769,8 @@ function! xquery#omni#complete(findstart, base)
             call map(all_ctsfunctions, '"cts:" . v:val . "("')
             let function_completions = copy(all_ctsfunctions)
         elseif namespace =~ 'cpf'
-            call map(all_cpffunctions, '"cpf:" . v:val . "("')
-            let function_completions = copy(all_cpffunctions)
+            call map(s:all_cpffunctions, '"cpf:" . v:val . "("')
+            let function_completions = copy(s:all_cpffunctions)
         elseif namespace =~ 'functx'
             call map(functxFunctions, '"functx:" . v:val . "("')
             let function_completions = copy(functxFunctions)
